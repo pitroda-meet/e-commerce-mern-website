@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
+import { apiurl } from "../../url";
 
 const initialState = {
   product: {},
@@ -127,7 +128,7 @@ export const {
 export const fetchProducts = () => async (dispatch) => {
   dispatch(fetchProductsStart());
   try {
-    const response = await fetch("http://localhost:8070/products/");
+    const response = await fetch(`${apiurl}/products/`);
     const data = await response.json();
     if (!response.ok) {
       throw new Error(data.message || "Something went wrong");
@@ -141,7 +142,7 @@ export const fetchProducts = () => async (dispatch) => {
 export const fetchAdminProducts = () => async (dispatch) => {
   dispatch(fetchAdminProductsStart());
   try {
-    const response = await fetch("http://localhost:8070/products/admin", {
+    const response = await fetch(`${apiurl}/products/admin`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -160,7 +161,7 @@ export const fetchAdminProducts = () => async (dispatch) => {
 export const fetchProductDetails = (id) => async (dispatch) => {
   dispatch(fetchProductDetailsStart());
   try {
-    const response = await fetch(`http://localhost:8070/products/${id}`);
+    const response = await fetch(`${apiurl}/products/${id}`);
     const data = await response.json();
     if (!response.ok) {
       throw new Error(data.message || "Something went wrong");
@@ -174,7 +175,7 @@ export const fetchProductDetails = (id) => async (dispatch) => {
 export const createProduct = (formData) => async (dispatch) => {
   dispatch(createProductStart());
   try {
-    const response = await fetch("http://localhost:8070/products/admin", {
+    const response = await fetch(`${apiurl}/products/admin`, {
       method: "POST",
       body: formData,
       headers: {
@@ -197,7 +198,7 @@ export const updateProduct =
     dispatch(updateProductStart());
     try {
       const response = await fetch(
-        `http://localhost:8070/products/admin/${id}/${filename}`,
+        `${apiurl}/products/admin/${id}/${filename}`,
         {
           method: "PUT",
           body: productData, // FormData instance
@@ -219,15 +220,12 @@ export const updateProduct =
 export const deleteProduct = (id, filename) => async (dispatch) => {
   dispatch(deleteProductStart());
   try {
-    const response = await fetch(
-      `http://localhost:8070/products/admin/${id}/${filename}`,
-      {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      }
-    );
+    const response = await fetch(`${apiurl}/products/admin/${id}/${filename}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
     const data = await response.json();
     if (!response.ok) {
       throw new Error(data.message || "Something went wrong");

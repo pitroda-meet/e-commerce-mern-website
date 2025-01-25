@@ -6,6 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "font-awesome/css/font-awesome.min.css";
 import $ from "jquery";
 import "jquery-validation";
+import { apiurl } from "../url";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
@@ -37,16 +38,13 @@ const ForgotPassword = () => {
 
     if ($("#forgotPasswordForm").valid()) {
       try {
-        const response = await fetch(
-          "http://localhost:8070/user/forgotpassword",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ email }),
-          }
-        );
+        const response = await fetch(`${apiurl}/user/forgotpassword`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email }),
+        });
 
         const data = await response.json();
 

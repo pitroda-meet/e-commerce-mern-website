@@ -19,6 +19,7 @@ import {
   Button,
   Card,
 } from "react-bootstrap";
+import { apiurl } from "../url";
 
 const CartScreen = () => {
   const dispatch = useDispatch();
@@ -100,7 +101,7 @@ const CartScreen = () => {
                   <Row className="align-items-center">
                     <Col xs={4} sm={2} lg={2}>
                       <Image
-                        src={`http://localhost:8070/products/download/${item.image}`}
+                        src={`${apiurl}/products/download/${item.image}`}
                         alt={item.name}
                         fluid
                         rounded

@@ -20,6 +20,7 @@ import {
 import { toast } from "react-toastify";
 import Loader from "../components/Loader";
 import AlertMessage from "../components/AlertMessage";
+import { apiurl } from "../url";
 
 const CheckoutForm = () => {
   const dispatch = useDispatch();
@@ -154,7 +155,7 @@ const CheckoutForm = () => {
 
       const amount = calculateSubtotal();
       try {
-        const res = await fetch(`http://localhost:8070/api/order`, {
+        const res = await fetch(`${apiurl}/api/order`, {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -186,7 +187,7 @@ const CheckoutForm = () => {
       handler: async (response) => {
         console.log("response", response);
         try {
-          const res = await fetch("http://localhost:8070/api/verify", {
+          const res = await fetch(`${apiurl}/api/verify`, {
             method: "POST",
             headers: {
               "content-type": "application/json",
@@ -375,7 +376,7 @@ const CheckoutForm = () => {
                     <Row className="g-0">
                       <Col xs={4} md={4}>
                         <Card.Img
-                          src={`http://localhost:8070/products/download/${item.image}`}
+                          src={`${apiurl}/products/download/${item.image}`}
                           alt={item.name}
                           className="img-fluid rounded-start"
                           style={{ objectFit: "cover", maxHeight: "100%" }}

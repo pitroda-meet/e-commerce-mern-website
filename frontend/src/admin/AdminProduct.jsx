@@ -6,6 +6,7 @@ import {
   updateProduct,
   deleteProduct,
 } from "../features/product/ProductSlice";
+import { apiurl } from "../url";
 
 const AdminProduct = () => {
   const dispatch = useDispatch();
@@ -120,7 +121,7 @@ const AdminProduct = () => {
               <td>{product.name}</td>
               <td>
                 <img
-                  src={`http://localhost:8070/products/download/${product.image}`}
+                  src={`${apiurl}/products/download/${product.image}`}
                   alt={product.name}
                   width="100"
                 />

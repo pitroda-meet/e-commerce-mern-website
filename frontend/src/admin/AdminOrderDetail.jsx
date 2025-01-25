@@ -17,6 +17,7 @@ import {
   updateOrderStatuss,
 } from "../features/order/orderSlice";
 import Loader from "../components/Loader";
+import { apiurl } from "../url";
 
 const AdminOrderDetail = () => {
   const { id } = useParams();
@@ -84,7 +85,7 @@ const AdminOrderDetail = () => {
                           <Row className="align-items-center">
                             <Col md={2}>
                               <Image
-                                src={`http://localhost:8070/products/download/${item.image}`}
+                                src={`${apiurl}/products/download/${item.image}`}
                                 alt={item.name}
                                 fluid
                                 rounded

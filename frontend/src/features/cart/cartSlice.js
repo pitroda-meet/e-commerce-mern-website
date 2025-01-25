@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
+import { apiurl } from "../../url";
 
 // Initial state
 const initialState = {
@@ -125,7 +126,7 @@ export const addToCartAsync =
         throw new Error("User ID is required");
       }
 
-      const response = await fetch("http://localhost:8070/cart", {
+      const response = await fetch(`${apiurl}/cart`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -158,7 +159,7 @@ export const removeFromCartAsync =
         throw new Error("User ID is required");
       }
 
-      const response = await fetch(`http://localhost:8070/cart`, {
+      const response = await fetch(`${apiurl}/cart`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -185,7 +186,7 @@ export const updateCartQtyAsync =
   async (dispatch) => {
     dispatch(updateCartQtyRequest());
     try {
-      const response = await fetch(`http://localhost:8070/cart/`, {
+      const response = await fetch(`${apiurl}/cart/`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -211,7 +212,7 @@ export const updateCartQtyAsync =
 export const removeAllCartItem = (userId) => async (dispatch) => {
   dispatch(clearCartRequest());
   try {
-    const response = await fetch(`http://localhost:8070/cart/deleteAll`, {
+    const response = await fetch(`${apiurl}/cart/deleteAll`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -236,7 +237,7 @@ export const removeAllCartItem = (userId) => async (dispatch) => {
 export const fetchProductsAsync = (userId) => async (dispatch) => {
   dispatch(fetchProductsRequest());
   try {
-    const response = await fetch(`http://localhost:8070/cart/${userId}`, {
+    const response = await fetch(`${apiurl}/cart/${userId}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
