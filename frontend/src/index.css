@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;500;600;700&display=swap');
+
+main{
+  min-height: 80vh;
+}
+
+.product-card-wrapper {
+  height: 90%;
+}
+
+.product-card-wrapper .card {
+  height: 100%;
+}
+
+/* ProductDetails.css */
+
+.product-details-container {
+  margin-top: 20px;
+}
+
+.product-image {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  max-width: 100%;
+  height: auto;
+}
+
+.product-name {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.add-to-cart-btn {
+  background-color: #ff6200;
+  border: none;
+  color: white;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #ff8c00;
+  color: white;
+}
+
+.card-body {
+  padding: 1rem;
+}
+
+.card-img {
+  object-fit: cover;
+  height: 100%;
+}
+
+.card-title {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.card-text {
+  font-size: 0.9rem;
+}
+
+@media (max-width: 576px) {
+  .card-body {
+    padding: 0.5rem;
+  }
+
+  .card-title {
+    font-size: 0.9rem;
+  }
+
+  .card-text {
+    font-size: 0.8rem;
+  }
+}
+
