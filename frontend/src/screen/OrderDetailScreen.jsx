@@ -83,9 +83,9 @@ const OrderDetailScreen = () => {
           >
             Back
           </Button>
-          <Button variant="primary" onClick={downloadPDF}>
+          {/* <Button variant="primary" onClick={downloadPDF}>
             Download PDF
-          </Button>
+          </Button> */}
         </Col>
       </Row>
 

@@ -67,7 +67,7 @@ const forgotPassword = asyncHandler(async (req, res, next) => {
     user.generatePasswordReset();
     await user.save();
 
-    const resetUrl = `http://localhost:5173/reset-password/${user.resetPasswordToken}`;
+    const resetUrl = `https://e-commerce-mern-website-cpf6.onrender.com/reset-password/${user.resetPasswordToken}`;
 
     const transporter = nodemailer.createTransport({
       service: "Gmail",
