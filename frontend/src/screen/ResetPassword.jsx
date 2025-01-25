@@ -6,6 +6,7 @@ import "bootswatch/dist/lux/bootstrap.min.css";
 import "font-awesome/css/font-awesome.min.css";
 import $ from "jquery";
 import "jquery-validation";
+import { apiurl } from "../url";
 
 const ResetPassword = () => {
   const [password, setPassword] = useState("");
@@ -53,16 +54,13 @@ const ResetPassword = () => {
 
     if ($("#resetPasswordForm").valid()) {
       try {
-        const response = await fetch(
-          `http://localhost:8070/user/resetpassword/${token}`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ password }),
-          }
-        );
+        const response = await fetch(`${apiurl}/user/resetpassword/${token}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ password }),
+        });
 
         const data = await response.json();
 
