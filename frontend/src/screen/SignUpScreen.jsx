@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import $ from "jquery";
 import "jquery-validation";
-import "bootstrap/dist/css/bootstrap.min.css";
+import "bootswatch/dist/lux/bootstrap.min.css";
 import "font-awesome/css/font-awesome.min.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";

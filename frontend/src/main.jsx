@@ -4,7 +4,7 @@ import App from "./App.jsx";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store/store";
-import "bootstrap/dist/css/bootstrap.min.css";
+import "bootswatch/dist/lux/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.js";
 import "./index.css";
 import Home from "./components/Home.jsx";

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
+import "bootswatch/dist/lux/bootstrap.min.css";
 import { LinkContainer } from "react-router-bootstrap";
 import { Link } from "react-router-dom";
 
