@@ -23,7 +23,7 @@ app.use(express.json());
 // Use CORS middleware
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://e-commerce-mern-website-cpf6.onrender.com",
   })
 );
 
