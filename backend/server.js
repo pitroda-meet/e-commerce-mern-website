@@ -13,7 +13,6 @@ const userRoutes = require("./routes/userRoutes");
 const conetctRoutes = require("./routes/ContectRoutes");
 const caerRoutes = require("./routes/CartRoutes");
 const orderRoutes = require("./routes/orderRoutes");
-const path = require("path");
 
 const app = express();
 
@@ -25,11 +24,7 @@ app.use(
     origin: "http://localhost:5173",
   })
 );
-const __dirname = path.resolve();
-app.use(express.static(path.join(__dirname, "/fronted/dist")));
-app.get("*", (_, res) => {
-  res.sendFile(path.resolve(__dirname, "fronted", "dist", "index.html"));
-});
+
 // Use product routes
 app.use("/products", productRoutes);
 app.use("/user", userRoutes);

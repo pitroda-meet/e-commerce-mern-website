@@ -3,7 +3,6 @@ import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import $ from "jquery";
 import "jquery-validation";
-import { weburl } from "../URL/url";
 
 const ContactScreen = () => {
   useEffect(() => {
@@ -38,7 +37,7 @@ const ContactScreen = () => {
             message: form.message.value,
           };
 
-          fetch(`${weburl}/form/contect`, {
+          fetch("http://localhost:8070/form/contect", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

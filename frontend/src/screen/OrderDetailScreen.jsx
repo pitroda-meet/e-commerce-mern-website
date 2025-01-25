@@ -13,7 +13,6 @@ import {
 } from "react-bootstrap";
 import { fetchOrderDetails } from "../features/order/orderSlice";
 import Loader from "../components/Loader";
-import { weburl } from "../URL/url";
 
 const OrderDetailScreen = () => {
   const dispatch = useDispatch();
@@ -41,12 +40,15 @@ const OrderDetailScreen = () => {
 
   const downloadPDF = async () => {
     try {
-      const response = await fetch(`${weburl}/api/order/invoice/${id}`, {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
+      const response = await fetch(
+        `http://localhost:8070/api/order/invoice/${id}`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Failed to generate PDF");
@@ -83,9 +85,9 @@ const OrderDetailScreen = () => {
           >
             Back
           </Button>
-          {/* <Button variant="primary" onClick={downloadPDF}>
+          <Button variant="primary" onClick={downloadPDF}>
             Download PDF
-          </Button> */}
+          </Button>
         </Col>
       </Row>
 
@@ -115,7 +117,7 @@ const OrderDetailScreen = () => {
                         <tr key={item._id}>
                           <td>
                             <img
-                              src={`${weburl}/products/download/${item.image}`}
+                              src={`http://localhost:8070/products/download/${item.image}`}
                               alt={item.name}
                               className="img-fluid rounded"
                               style={{ maxWidth: "80px" }}

@@ -18,7 +18,6 @@ import { fetchProductDetails } from "../features/product/ProductSlice";
 import Loader from "../components/Loader";
 import AlertMessage from "../components/AlertMessage";
 import { addToCartAsync } from "../features/cart/cartSlice";
-import { weburl } from "../URL/url";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -56,7 +55,7 @@ const ProductDetails = () => {
             <i className="fas fa-arrow-left fs-3">&nbsp;GO BACK</i>
           </LinkContainer>
           <Image
-            src={`${weburl}/products/download/${product.image}`}
+            src={`http://localhost:8070/products/download/${product.image}`}
             alt={product.name}
             fluid
             className="product-image"

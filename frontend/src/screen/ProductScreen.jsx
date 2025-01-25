@@ -2,7 +2,6 @@ import React from "react";
 import { Card } from "react-bootstrap";
 import Rating from "../components/Rating";
 import { LinkContainer } from "react-router-bootstrap";
-import { weburl } from "../URL/url";
 
 const ProductScreen = ({ product }) => {
   return (
@@ -10,7 +9,7 @@ const ProductScreen = ({ product }) => {
       <Card className="my-3 p-3 rounded h-100">
         <LinkContainer to={`/products/${product._id}`}>
           <Card.Img
-            src={`${weburl}/products/download/${product.image}`}
+            src={`http://localhost:8070/products/download/${product.image}`}
             alt={product.name}
             variant="top"
           />

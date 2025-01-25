@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
-import { weburl } from "../../URL/url";
 
 const initialState = {
   user: [],
@@ -107,7 +106,7 @@ export const registerUser = (userData, navigate) => async (dispatch) => {
   try {
     dispatch(userRequest());
 
-    const response = await fetch(`${weburl}/user/signup`, {
+    const response = await fetch("http://localhost:8070/user/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -133,7 +132,7 @@ export const loginUser = (userData, navigate) => async (dispatch) => {
   try {
     dispatch(userRequest());
 
-    const response = await fetch(`${weburl}/user/login`, {
+    const response = await fetch("http://localhost:8070/user/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -162,7 +161,7 @@ export const logoutUser = () => async (dispatch) => {
 export const fetchUser = () => async (dispatch) => {
   try {
     dispatch(fetchUserRequest());
-    const response = await fetch(`${weburl}/user/getall`, {
+    const response = await fetch(`http://localhost:8070/user/getall`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -184,7 +183,7 @@ export const updateUserRole = (userId, isAdmin) => async (dispatch) => {
   try {
     dispatch(userRequest());
 
-    const response = await fetch(`${weburl}/user/updaterole`, {
+    const response = await fetch("http://localhost:8070/user/updaterole", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

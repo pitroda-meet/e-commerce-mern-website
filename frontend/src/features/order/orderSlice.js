@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
-import { weburl } from "../../URL/url";
 
 const initialState = {
   orders: [],
@@ -81,13 +80,16 @@ export default orderSlice.reducer;
 export const fetchOrders = (userId) => async (dispatch) => {
   try {
     dispatch(fetchOrdersRequest());
-    const response = await fetch(`${weburl}/api/order/display/${userId}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    });
+    const response = await fetch(
+      `http://localhost:8070/api/order/display/${userId}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    );
     const data = await response.json();
     if (!response.ok) {
       dispatch(fetchOrdersFail(data.message));
@@ -103,7 +105,7 @@ export const fetchOrderDetails = (orderId, userId) => async (dispatch) => {
   try {
     dispatch(fetchOrderDetailsRequest());
     const response = await fetch(
-      `${weburl}/api/order/detail?id=${orderId}&userId=${userId}`,
+      `http://localhost:8070/api/order/detail?id=${orderId}&userId=${userId}`,
       {
         method: "GET",
         headers: {
@@ -127,7 +129,7 @@ export const fetchOrderDetails = (orderId, userId) => async (dispatch) => {
 export const fetchAdminOrders = () => async (dispatch) => {
   try {
     dispatch(fetchOrdersRequest());
-    const response = await fetch(`${weburl}/api/orderAdmin`, {
+    const response = await fetch("http://localhost:8070/api/orderAdmin", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -148,13 +150,16 @@ export const fetchAdminOrders = () => async (dispatch) => {
 export const fetchAdminOrderDetails = (orderId) => async (dispatch) => {
   try {
     dispatch(fetchOrderDetailsRequest());
-    const response = await fetch(`${weburl}/api/orderDetailAdmin/${orderId}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    });
+    const response = await fetch(
+      `http://localhost:8070/api/orderDetailAdmin/${orderId}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    );
     const data = await response.json();
     if (!response.ok) {
       dispatch(fetchOrderDetailsFail(data.message));
@@ -170,7 +175,7 @@ export const updateOrderStatuss =
     try {
       dispatch(updateOrderStatusRequest());
       const response = await fetch(
-        `${weburl}/api/orderDetailAdmin/${orderId}`,
+        `http://localhost:8070/api/orderDetailAdmin/${orderId}`,
         {
           method: "PUT",
           headers: {
