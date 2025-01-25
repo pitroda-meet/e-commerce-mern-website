@@ -3,6 +3,8 @@ require("dotenv").config();
 const express = require("express");
 require("colors");
 const cors = require("cors");
+const path = require("path");
+const fs = require("fs"); // Import the File System module
 
 const connectDb = require("./confing/confing");
 const { errorHandler } = require("./middelewares/error");
@@ -25,13 +27,19 @@ app.use(
   })
 );
 
-// Use product routes
+// Use routes
 app.use("/products", productRoutes);
 app.use("/user", userRoutes);
 app.use("/form", conetctRoutes);
 app.use("/cart", caerRoutes);
 app.use("/api", orderRoutes);
 
+// Serve static files
+app.use(express.static(path.join(__dirname, "../frontend/dist")));
+
+app.get("*", (_, res) => {
+  res.sendFile(path.resolve(__dirname, "../frontend/dist/index.html"));
+});
 app.use(errorHandler);
 
 const PORT = 8070;

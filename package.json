@@ -5,8 +5,9 @@
   "type": "commonjs",
   "scripts": {
     "server": "nodemon backend/server",
-    "client": "npm run dev --prefix frontend",
-    "both": "concurrently \"npm run server\" \"npm run client\"",
+    "start": "nodemon backend/server",
+    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend",
+    "both": "concurrently \"npm run server\" \"npm run dev --prefix frontend\"",
     "data:import": "node backend/seeder.js",
     "data:destroy": "node backend/seeder.js -d",
     "test": "echo \"Error: no test specified\" && exit 1"
